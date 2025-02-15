@@ -5,10 +5,10 @@ from functions import *
 import subprocess
 import os
 
-AIPROXY_TOKEN = os.getenv("AIPROXY_TOKEN")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
-if AIPROXY_TOKEN is None:
-    print("AIPROXY_TOKEN environment variable not set.")
+if OPENAI_API_KEY is None:
+    print("OPENAI_API_KEY environment variable not set.")
 else:
     
     pass 
@@ -26,7 +26,7 @@ async def read_file(path: str):
 @app.post("/run")
 async def run_task(task: str):
     try:
-        task_output = get_task_output(AIPROXY_TOKEN, task)
+        task_output = get_task_output(OPENAI_API_KEY, task)
         task = task.lower()
         days = {"monday": 0, "tuesday": 1, "wednesday": 2, "thursday": 3, "friday": 4, "saturday": 5, "sunday": 6}
 
