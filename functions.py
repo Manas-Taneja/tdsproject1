@@ -6,8 +6,8 @@ import requests
 from fuzzywuzzy import fuzz
 from datetime import datetime
 from openai import OpenAI
-def get_task_output(AI_TOKEN, task):
-    client = OpenAI(api_key = AI_TOKEN)
+def get_task_output(OPENAI_API_KEY, task):
+    client = OpenAI(api_key = OPENAI_API_KEY)
     response = client.chat.completions.create(
     model="gpt-4o-mini",
     store=True,
