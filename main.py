@@ -3,16 +3,15 @@ from fastapi import FastAPI, HTTPException
 import os
 from functions import *
 import subprocess
-AIPROXY_TOKEN = None
-with open(".env") as f:
-    try:
-        for line in f:
-            l=line.split("=")
-            key,value = l[0],l[1]
-            AIPROXY_TOKEN = value
-            # print(AIPROXY_TOKEN)
-    except:
-        print("Setup the enviroment variables")
+import os
+
+AIPROXY_TOKEN = os.getenv("AIPROXY_TOKEN")
+
+if AIPROXY_TOKEN is None:
+    print("AIPROXY_TOKEN environment variable not set.")
+else:
+    
+    pass 
 app = FastAPI()
 ### /run and /read
 @app.get("/read")
